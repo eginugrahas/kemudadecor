@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useRef } from "react";
 import Diveder from "../components/Devider";
 import Image from "next/image";
 import heroImg from "../../../public/hero.png";
@@ -10,14 +12,81 @@ import mini from "../../../public/mini.png";
 import cod from "../../../public/cod.png";
 import tiktok from "../../../public/tiktok.png";
 import Link from "next/link";
-import Script from 'next/script'
-
-
-export const metadata = {
-  title: " Sticker Kucing",
-};
+import Script from "next/script";
 
 function page() {
+  const selectRef = useRef(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+    rtrw: "",
+    kelurahan: "",
+    kecamatan: "",
+    provinsi: "",
+    city: "",
+    kodepos: "",
+    phone: "",
+  });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  }
+
+  function handleSubmit() {
+    // console.log(encodeURI(formData.name));
+    // console.log(
+    //   "https://wa.me/6289503651196?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
+    //     encodeURI(formData.name) +
+    //     "%0D%0AEmail%3A+" +
+    //     encodeURI(formData.email) +
+    //     "%0D%0AAlamat%3A+" +
+    //     "%0D%0ANo.HP/WA%3A+" +
+    //     encodeURI(formData.phone) +
+    //     "+RT%2FRW+" +
+    //     encodeURI(formData.address) +
+    //     encodeURI(formData.rtrw) +
+    //     "%2C+" +
+    //     encodeURI(formData.kelurahan) +
+    //     "%2C+" +
+    //     encodeURI(formData.kecamatan) +
+    //     "%2C+" +
+    //     encodeURI(formData.city) +
+    //     "%2C+" +
+    //     encodeURI(formData.provinsi) +
+    //     "+" +
+    //     encodeURI(formData.kodepos) +
+    //     "%0D%0A%0D%0AMetode+Pembayaran%3A+" +
+    //     encodeURI(selectRef.current.value) +
+    //     ""
+    // );
+    window.location.href =
+    "https://wa.me/6289503651196?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
+    encodeURI(formData.name) +
+    "%0D%0AEmail%3A+" +
+    encodeURI(formData.email) +
+    "%0D%0ANo.HP/WA%3A+" +
+    encodeURI(formData.phone) +
+    "%0D%0AAlamat%3A+" +
+    encodeURI(formData.address) +
+    "+RT%2FRW+" +
+    encodeURI(formData.rtrw) +
+    "%2C+" +
+    encodeURI(formData.kelurahan) +
+    "%2C+" +
+    encodeURI(formData.kecamatan) +
+    "%2C+" +
+    encodeURI(formData.city) +
+    "%2C+" +
+    encodeURI(formData.provinsi) +
+    "+" +
+    encodeURI(formData.kodepos) +
+    "%0D%0A%0D%0AMetode+Pembayaran%3A+" +
+    encodeURI(selectRef.current.value) +
+    ""
+  }
+
   return (
     <div className="flex flex-col items-center">
       <div className="max-w-[600px] border w-full flex flex-col items-center">
@@ -85,7 +154,7 @@ function page() {
           </div>
         </div>
         <div className="p-3 mx-3 border rounded border-[#FF6766]">
-          <form>
+          <form action={handleSubmit}>
             <div className="space-y-12">
               <div className="">
                 <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -109,6 +178,8 @@ function page() {
                         type="text"
                         name="name"
                         id="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         placeholder="Masukan Nama Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -127,8 +198,29 @@ function page() {
                         id="email"
                         name="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         placeholder="Masukan Email Anda"
-                        autoComplete="email"
+                        className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Nomor HP/Whatsapp
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="text"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="Masukan Email Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -136,7 +228,7 @@ function page() {
 
                   <div className="col-span-full">
                     <label
-                      htmlFor="street-address"
+                      htmlFor="address"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Alamat Pengiriman
@@ -144,10 +236,11 @@ function page() {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="street-address"
-                        id="street-address"
+                        name="address"
+                        id="address"
+                        value={formData.address}
+                        onChange={handleChange}
                         placeholder="Masukan Alamat Anda"
-                        autoComplete="street-address"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -165,6 +258,8 @@ function page() {
                         type="text"
                         name="rtrw"
                         id="rtrw"
+                        value={formData.rtrw}
+                        onChange={handleChange}
                         placeholder="Masukan RT/RW Anda (contoh: 001/002)"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -183,6 +278,8 @@ function page() {
                         type="text"
                         name="kelurahan"
                         id="kelurahan"
+                        value={formData.kelurahan}
+                        onChange={handleChange}
                         placeholder="Masukan Kelurahan Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -201,6 +298,8 @@ function page() {
                         type="text"
                         name="kecamatan"
                         id="kecamatan"
+                        value={formData.kecamatan}
+                        onChange={handleChange}
                         placeholder="Masukan Kecamatan Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -219,7 +318,8 @@ function page() {
                         type="text"
                         name="city"
                         id="city"
-                        autoComplete="address-level2"
+                        value={formData.city}
+                        onChange={handleChange}
                         placeholder="Masukan Kota/Kabupaten Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -228,7 +328,7 @@ function page() {
 
                   <div className="sm:col-span-2">
                     <label
-                      htmlFor="region"
+                      htmlFor="provinsi"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Provinsi
@@ -236,8 +336,10 @@ function page() {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="region"
-                        id="region"
+                        name="provinsi"
+                        id="provinsi"
+                        value={formData.provinsi}
+                        onChange={handleChange}
                         placeholder="Masukan Provinsi Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
@@ -246,7 +348,7 @@ function page() {
 
                   <div className="sm:col-span-2">
                     <label
-                      htmlFor="postal-code"
+                      htmlFor="kodepos"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Kode Pos
@@ -254,11 +356,31 @@ function page() {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="postal-code"
-                        id="postal-code"
+                        name="kodepos"
+                        id="kodepos"
+                        value={formData.kodepos}
+                        onChange={handleChange}
                         placeholder="Masukan Kode Pos"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
+                    </div>
+                  </div>
+
+                  <div className="col-span-full">
+                    <label
+                      htmlFor="payment"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Metode Pembayaran
+                    </label>
+                    <div className="mt-2">
+                      <select
+                        className="block w-full p-3 text-sm font-medium leading-6 text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300"
+                        ref={selectRef}
+                      >
+                        <option value="transfer">Transfer Bank</option>
+                        <option value="cod">Bayar di Tempat (COD)</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -282,11 +404,12 @@ function page() {
           <Diveder />
         </div>
         <div className="flex my-4 items-center-justify-center">
-          <Link href={"https://www.tiktok.com/@kemudadecor?is_from_webapp=1&sender_device=pc"}>
-            <Image
-              src={tiktok}
-              alt={"Find Kemudadecor on Tiktok"}
-            />
+          <Link
+            href={
+              "https://www.tiktok.com/@kemudadecor?is_from_webapp=1&sender_device=pc"
+            }
+          >
+            <Image src={tiktok} alt={"Find Kemudadecor on Tiktok"} />
           </Link>
         </div>
         <blockquote
@@ -294,7 +417,7 @@ function page() {
           cite="https://www.tiktok.com/@kemudadecor"
           data-unique-id="kemudadecor"
           data-embed-type="creator"
-          style={{maxWidth: "780px", minWidth: "288px"}}
+          style={{ maxWidth: "780px", minWidth: "288px" }}
         >
           <section>
             <a
