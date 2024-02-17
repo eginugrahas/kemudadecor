@@ -14,7 +14,7 @@ import tiktok from "../../../public/tiktok.png";
 import Link from "next/link";
 import Script from "next/script";
 
-function page() {
+function KucingPage() {
   const selectRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -34,7 +34,7 @@ function page() {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   }
 
-  function HandleSubmit() {
+  function handleSubmit() {
     // console.log(encodeURI(formData.name));
     // console.log(
     //   "https://wa.me/6289503651196?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
@@ -434,4 +434,4 @@ function page() {
   );
 }
 
-export default page;
+export default KucingPage;
