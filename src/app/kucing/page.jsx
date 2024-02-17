@@ -34,7 +34,7 @@ function page() {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   }
 
-  function handleSubmit() {
+  function HandleSubmit() {
     // console.log(encodeURI(formData.name));
     // console.log(
     //   "https://wa.me/6289503651196?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
@@ -154,7 +154,7 @@ function page() {
           </div>
         </div>
         <div className="p-3 mx-3 border rounded border-[#FF6766]">
-          <form action={handleSubmit}>
+          <form action={HandleSubmit}>
             <div className="space-y-12">
               <div className="">
                 <h2 className="text-base font-semibold leading-7 text-gray-900">
