@@ -154,7 +154,7 @@ function KucingPage() {
           </div>
         </div>
         <div className="p-3 mx-3 border rounded border-[#FF6766]">
-          <form action={HandleSubmit}>
+          <form action={handleSubmit}>
             <div className="space-y-12">
               <div className="">
                 <h2 className="text-base font-semibold leading-7 text-gray-900">
