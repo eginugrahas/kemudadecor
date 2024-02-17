@@ -19,7 +19,7 @@ function page() {
       <div className="max-w-[600px] border w-full flex flex-col items-center">
         <div className="w-full mt-4">
           <Diveder />
-          <h1 className="py-3 px-4 text-2xl font-bold text-center text-[#FF0000] text-shadow shadow-slate-400">
+          <h1 className="py-3 px-4 text-3xl font-bold text-center text-[#FF0000] text-shadow shadow-slate-400">
             PROMO DISKON TERBATAS CUMA HARI INI!
           </h1>
           <Diveder />
@@ -28,7 +28,7 @@ function page() {
           <Image src={heroImg} alt="hero" />
         </div>
         <div className="m-4">
-          <p className="px-3 text-xl font-bold text-center">
+          <p className="px-3 text-2xl font-bold text-center">
             Mudah diaplikasikan diberbagai tempat
           </p>
         </div>
@@ -38,7 +38,7 @@ function page() {
           <Image src={kc3} alt="kc3" />
         </div>
         <div className="w-full my-4">
-          <p className="px-3 text-2xl font-bold text-center text-[#072F75]">
+          <p className="px-3 text-3xl font-bold text-center text-[#072F75]">
             KENAPA KAMU BUTUH STICKER INI?
           </p>
           <div className="py-3 px-2 mx-3 border-2 border-[#FDB300] mt-2 rounded ">
@@ -59,7 +59,7 @@ function page() {
             </ul>
           </div>
           <div className="m-4">
-            <button className="shadow-md shadow-slate-400 p-3 w-full text-center bg-[#FF0000] text-2xl font-bold text-white rounded-md">
+            <button className="shadow-md shadow-slate-400 p-3 w-full text-center bg-[#FF0000] text-4xl font-bold text-white rounded-md">
               PESAN SEKARANG
             </button>
           </div>
@@ -69,13 +69,14 @@ function page() {
               DAPATKAN PROMO TERBATAS HANYA UNTUK HARI INI!
             </p>
           </div>
-          <div className="">
+          <div className="flex flex-col items-center w-full">
             <Image src={heroImg2} alt="hero2" />
             <Image src={mini} alt="mini" />
           </div>
           <div className="w-full my-4">
-            <p className="px-3 text-3xl font-bold text-center text-[#FF0000]">
-              SEGERA ISI FORMULIR DIBAWAH INI
+            <p className="px-3 text-xl font-bold text-center text-[#FF0000]">
+              SEGERA ISI FORMULIR DIBAWAH INI <br />
+            <span className="text-4xl">&darr; &darr; &darr;</span>
             </p>
           </div>
         </div>
@@ -263,7 +264,7 @@ function page() {
             <div className="mt-6">
               <button
                 type="submit"
-                className="rounded-md w-full bg-[#499066] px-3 py-2 font-semibold text-white shadow-sm text-2xl"
+                className="rounded-md w-full bg-[#499066] px-3 py-2 font-semibold text-white shadow-sm text-4xl"
               >
                 KIRIM
               </button>
