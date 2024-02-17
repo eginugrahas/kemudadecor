@@ -8,6 +8,10 @@ import kc2 from "../../../public/kc_2.png";
 import kc3 from "../../../public/kc_3.png";
 import mini from "../../../public/mini.png";
 import cod from "../../../public/cod.png";
+import tiktok from "../../../public/tiktok.png";
+import Link from "next/link";
+import Script from 'next/script'
+
 
 export const metadata = {
   title: " Sticker Kucing",
@@ -76,7 +80,7 @@ function page() {
           <div className="w-full my-4">
             <p className="px-3 text-xl font-bold text-center text-[#FF0000]">
               SEGERA ISI FORMULIR DIBAWAH INI <br />
-            <span className="text-4xl">&darr; &darr; &darr;</span>
+              <span className="text-4xl">&darr; &darr; &darr;</span>
             </p>
           </div>
         </div>
@@ -275,11 +279,33 @@ function page() {
           <Image src={cod} alt="cod" />
         </div>
         <div className="w-full">
-          <Diveder/>
+          <Diveder />
         </div>
         <div className="flex my-4 items-center-justify-center">
-          <Image src={"/tiktok.png"} alt={"Find Kemudadecor on Tiktok"} width={112} height={28}/>
+          <Link href={"https://www.tiktok.com/@kemudadecor?is_from_webapp=1&sender_device=pc"}>
+            <Image
+              src={tiktok}
+              alt={"Find Kemudadecor on Tiktok"}
+            />
+          </Link>
         </div>
+        <blockquote
+          className="tiktok-embed"
+          cite="https://www.tiktok.com/@kemudadecor"
+          data-unique-id="kemudadecor"
+          data-embed-type="creator"
+          style={{maxWidth: "780px", minWidth: "288px"}}
+        >
+          <section>
+            <a
+              target="_blank"
+              href="https://www.tiktok.com/@kemudadecor?refer=creator_embed"
+            >
+              @kemudadecor
+            </a>
+          </section>
+        </blockquote>
+        <Script src="https://www.tiktok.com/embed.js" />
       </div>
     </div>
   );
