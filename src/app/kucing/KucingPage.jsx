@@ -62,7 +62,7 @@ function KucingPage() {
     //     ""
     // );
     window.location.href =
-    "https://wa.me/6289503651196?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
+    "https://wa.me/6283834867516?text=Halo+saya+ingin+memesan+Paket+Sticker+Kucing+dengan+HARGA+PROMO%0D%0A%0D%0ABerikut+Data+Pengiriman+Saya%3A+%0D%0ANama%3A+" +
     encodeURI(formData.name) +
     "%0D%0AEmail%3A+" +
     encodeURI(formData.email) +
