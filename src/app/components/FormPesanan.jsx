@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 
 function FormPesanan() {
   const selectRef = useRef(null);
@@ -14,6 +14,8 @@ function FormPesanan() {
     kodepos: "",
     phone: "",
   });
+
+  const [isDisabled, setDisabled] = useState(true)
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -46,6 +48,12 @@ function FormPesanan() {
     encodeURI(selectRef.current.value) +
     ""
   }
+
+  useEffect(()=>{
+    const allValuesNotEmpty = Object.values(formData).every((val) => val !== "");
+
+    setDisabled(!allValuesNotEmpty);
+  }, [formData])
   return (
     <div className="p-3 mx-3 border rounded border-[#FF6766]">
           <form action={handleSubmit}>
@@ -72,7 +80,7 @@ function FormPesanan() {
                         type="text"
                         name="name"
                         id="name"
-                        // value={formData.name}
+                        value={formData.name}
                         onChange={handleChange}
                         placeholder="Masukan Nama Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -80,7 +88,7 @@ function FormPesanan() {
                     </div>
                   </div>
 
-                  <div className="sm:col-span-3">
+                  <div className={`sm:col-span-3 ${formData.name ===  "" ? "hidden" : ""}`}>
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -92,7 +100,7 @@ function FormPesanan() {
                         id="email"
                         name="email"
                         type="email"
-                        // value={formData.email}
+                        value={formData.email}
                         onChange={handleChange}
                         placeholder="Masukan Email Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -100,7 +108,7 @@ function FormPesanan() {
                     </div>
                   </div>
 
-                  <div className="sm:col-span-3">
+                  <div className={`sm:col-span-3 ${formData.email ===  "" ? "hidden" : ""}`}>
                     <label
                       htmlFor="phone"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -112,15 +120,15 @@ function FormPesanan() {
                         id="phone"
                         name="phone"
                         type="text"
-                        // value={formData.phone}
+                        value={formData.phone}
                         onChange={handleChange}
                         placeholder="Masukan Email Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
-
-                  <div className="col-span-full">
+                  <div className={`${formData.phone ===  "" ? "hidden" : ""}`}>
+                  <div className={`col-span-full`}>
                     <label
                       htmlFor="address"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -132,7 +140,7 @@ function FormPesanan() {
                         type="text"
                         name="address"
                         id="address"
-                        // value={formData.address}
+                        value={formData.address}
                         onChange={handleChange}
                         placeholder="Masukan Alamat Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -152,7 +160,7 @@ function FormPesanan() {
                         type="text"
                         name="rtrw"
                         id="rtrw"
-                        // value={formData.rtrw}
+                        value={formData.rtrw}
                         onChange={handleChange}
                         placeholder="Masukan RT/RW Anda (contoh: 001/002)"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -172,7 +180,7 @@ function FormPesanan() {
                         type="text"
                         name="kelurahan"
                         id="kelurahan"
-                        // value={formData.kelurahan}
+                        value={formData.kelurahan}
                         onChange={handleChange}
                         placeholder="Masukan Kelurahan Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -192,7 +200,7 @@ function FormPesanan() {
                         type="text"
                         name="kecamatan"
                         id="kecamatan"
-                        // value={formData.kecamatan}
+                        value={formData.kecamatan}
                         onChange={handleChange}
                         placeholder="Masukan Kecamatan Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -212,7 +220,7 @@ function FormPesanan() {
                         type="text"
                         name="city"
                         id="city"
-                        // value={formData.city}
+                        value={formData.city}
                         onChange={handleChange}
                         placeholder="Masukan Kota/Kabupaten Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -232,7 +240,7 @@ function FormPesanan() {
                         type="text"
                         name="provinsi"
                         id="provinsi"
-                        // value={formData.provinsi}
+                        value={formData.provinsi}
                         onChange={handleChange}
                         placeholder="Masukan Provinsi Anda"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -252,12 +260,13 @@ function FormPesanan() {
                         type="text"
                         name="kodepos"
                         id="kodepos"
-                        // value={formData.kodepos}
+                        value={formData.kodepos}
                         onChange={handleChange}
                         placeholder="Masukan Kode Pos"
                         className="block w-full p-3 text-xs text-gray-900 border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
+                  </div>
                   </div>
 
                   <div className="col-span-full">
@@ -284,7 +293,8 @@ function FormPesanan() {
             <div className="mt-6">
               <button
                 type="submit"
-                className="rounded-md w-full bg-[#499066] px-3 py-2 font-semibold text-white shadow-sm text-4xl"
+                disabled={isDisabled}
+                className="disabled:bg-gray-500 rounded-md w-full bg-[#499066] px-3 py-2 font-semibold text-white shadow-sm text-4xl"
               >
                 KIRIM
               </button>
